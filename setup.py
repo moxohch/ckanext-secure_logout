@@ -17,5 +17,9 @@ setup(
             ('**.js', 'javascript', None),
             ('**/templates/**.html', 'ckan', None),
         ],
-    }
+    },
+    entry_points="""
+    [ckan.plugins]
+    secure_logout=ckanext.secure_logout.plugin:SecureLogoutPlugin
+    """
 )
