@@ -1,0 +1,6 @@
+include README.rst
+include LICENSE
+include requirements.txt
+recursive-include ckanext/secure_logout *.html *.json *.js *.less *.css *.mo *.yml
+recursive-include ckanext/secure_logout/migration *.ini *.py *.mako
+recursive-include ckanext/secure_logout/public *.*

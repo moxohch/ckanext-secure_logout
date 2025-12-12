@@ -1,0 +1,38 @@
+[project]
+name = "ckanext-secure_logout"
+version = "0.0.1"
+description = "A CKAN plugin that makes sure the session is invalidated in server-side too when user logs out"
+readme = "README.md"
+authors = [
+    {name = "Fisnik Bedrija", email = "fisnik.bedrija@moxoh.ch"}
+]
+license = {text = "AGPL"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+
+keywords = [ "CKAN", "CKAN,", "logout,", "cookie,", "session", ]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com//ckanext-secure_logout"
+
+[project.entry-points."ckan.plugins"]
+secure_logout = "ckanext.secure_logout.plugin:SecureLogoutPlugin"
+
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+        "ignore::sqlalchemy.exc.SADeprecationWarning",
+        "ignore::sqlalchemy.exc.SAWarning",
+        "ignore::DeprecationWarning",
+]
+addopts = "--ckan-ini test.ini"

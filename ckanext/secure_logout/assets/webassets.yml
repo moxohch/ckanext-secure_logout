@@ -1,0 +1,14 @@
+# secure_logout-js:
+#   filter: rjsmin
+#   output: ckanext-secure_logout/%(version)s-secure_logout.js
+#   contents:
+#     - js/secure_logout.js
+#   extra:
+#     preload:
+#       - base/main
+
+# secure_logout-css:
+#   filter: cssrewrite
+#   output: ckanext-secure_logout/%(version)s-secure_logout.css
+#   contents:
+#     - css/secure_logout.css
