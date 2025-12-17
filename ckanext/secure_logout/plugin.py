@@ -88,3 +88,10 @@ class SecureLogoutPlugin(plugins.SingletonPlugin):
 
         # Return the modified application
         return app
+    
+    def make_error_log_middleware(self, app, config):
+        """
+        Required by IMiddleware interface in newer CKAN versions.
+        We just return the app as is because we don't need custom error logging.
+        """
+        return app
