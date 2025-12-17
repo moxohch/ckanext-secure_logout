@@ -24,6 +24,9 @@ def init_flask_session(app):
         
         # Apply the configuration
         Session(app)
+
+        # Clean up to avoid side effects for tests
+        app.config.pop('SESSION_REDIS', None)
         
         log.info("Flask-Session configured with Redis")
         
