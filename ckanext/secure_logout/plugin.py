@@ -87,6 +87,22 @@ class SecureLogoutPlugin(plugins.SingletonPlugin):
         log.info("Secure session plugin initialized via IMiddleware")
 
         # Return the modified application
+        from flask import session
+        from markupsafe import Markup
+        
+        @app.after_request
+        def _fix_markup_in_session(response):
+            if "_flashes" in session:
+                session["_flashes"] = [(c, str(m) if isinstance(m, Markup) else m)
+                               for c, m in session["_flashes"]]
+
+    # Convert any top-level Markup values
+            for k, v in list(session.items()):
+                if isinstance(v, Markup):
+                    session[k] = str(v)
+                    
+            return response
+
         return app
     
     def make_error_log_middleware(self, app, config):
